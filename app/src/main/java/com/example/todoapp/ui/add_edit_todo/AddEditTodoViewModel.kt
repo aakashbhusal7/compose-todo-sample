@@ -33,7 +33,7 @@ class AddEditTodoViewModel @Inject constructor(
     val uiEvent = _uiEvent.receiveAsFlow()
 
     init {
-        val todoId = savedStateHandle.get<Int>("todoId")!!
+        val todoId = savedStateHandle.get<Int>("todoId") ?: -1
         if (todoId != -1) {
             viewModelScope.launch {
                 repository.getTodoById(todoId)?.let { todo ->
